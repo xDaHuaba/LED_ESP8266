@@ -61,6 +61,7 @@
     <canvas id="chartJSContainer" style="height: 80%; width: 80%;"></canvas>
 </div>
 <script>
+    // noinspection JSUnusedGlobalSymbols
     var options = {
         type: 'line',
         data: {
@@ -163,14 +164,14 @@
     }
 
     function sendDatapoints() {
-        var numPoints = window.test.data.datasets[datasetIndex].data.length
+        var numPoints = window.test.data.datasets[0].data.length
         var datapoints = []
 
         for (i = 0; i < (numPoints); i++) {
             var obj = {
                 index: i,
-                percent: window.test.data.datasets[datasetIndex].data[i].y,
-                temp: window.test.data.datasets[datasetIndex].data[i].x
+                percent: window.test.data.datasets[0].data[i].y,
+                temp: window.test.data.datasets[0].data[i].x
             }
             datapoints.push(obj)
         }
@@ -204,9 +205,6 @@
             }]
         ;
         chart.update();
-        post("/setFanCurve", {
-            data: datapoints
-        });
     }
 </script>
 </body>
