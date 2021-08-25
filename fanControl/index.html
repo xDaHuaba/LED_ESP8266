@@ -152,7 +152,7 @@
 
                         var jsonString = JSON.stringify(datapoints);
                         console.log(datapoints)
-                        post("192.168.1.231", {
+                        post("http://localhost/setFanCurve", {
                             data: datapoints
                         });
                     }
