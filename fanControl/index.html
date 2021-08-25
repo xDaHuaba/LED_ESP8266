@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Chart.js Drag Data Points Plugin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata@2.0.2/dist/chartjs-plugin-dragdata.min.js"></script>
     <script src="assets/chartjs-plugin-dragdata.min.js"></script>
@@ -152,7 +152,7 @@
 
                         var jsonString = JSON.stringify(datapoints);
                         console.log(datapoints)
-                        post("http://localhost/setFanCurve", {
+                        post("/setFanCurve", {
                             data: datapoints
                         });
                     }
