@@ -136,25 +136,7 @@
                     },
                     onDragEnd: function (e, datasetIndex, index, value) {
                         e.target.style.cursor = 'default'
-
-
-                        var numPoints = window.test.data.datasets[datasetIndex].data.length
-                        var datapoints = []
-
-                        for (i = 0; i < (numPoints); i++) {
-                            var obj = {
-                                index: i,
-                                percent: window.test.data.datasets[datasetIndex].data[i].y,
-                                temp: window.test.data.datasets[datasetIndex].data[i].x
-                            }
-                            datapoints.push(obj)
-                        }
-
-                        var jsonString = JSON.stringify(datapoints);
-                        console.log(datapoints)
-                        post("/setFanCurve", {
-                            data: datapoints
-                        });
+                        sendDatapoints()
                     }
                 }
             }
@@ -177,6 +159,26 @@
 
     function resetDatapoints() {
         updateConfigAsNewObject(window.test)
+        sendDatapoints()
+    }
+
+    function sendDatapoints() {
+        var numPoints = window.test.data.datasets[datasetIndex].data.length
+        var datapoints = []
+
+        for (i = 0; i < (numPoints); i++) {
+            var obj = {
+                index: i,
+                percent: window.test.data.datasets[datasetIndex].data[i].y,
+                temp: window.test.data.datasets[datasetIndex].data[i].x
+            }
+            datapoints.push(obj)
+        }
+
+        console.log(datapoints)
+        post("/setFanCurve", {
+            data: datapoints
+        });
     }
 
     function updateConfigAsNewObject(chart) {
